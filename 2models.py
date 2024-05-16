@@ -1,36 +1,36 @@
 # Inspired by https://github.com/mneedham/LearnDataWithMark/blob/main/ollama-parallel/app_v2.py
 # Previously, two models were the maximum; now, two models are the minimum.
 
-"""
+diff_notes ="""
 Here are the main differences:
 
     Initialization:
-        The first code uses ollama.AsyncClient() to initialize the client.
-        The second code uses AsyncOpenAI(base_url="http://localhost:11434/v1", api_key="ignore-me") to initialize the client.
+        This code uses ollama.AsyncClient() to initialize the client.
+        app_v2.py uses AsyncOpenAI(base_url="http://localhost:11434/v1", api_key="ignore-me") to initialize the client.
 
     Session State Initialization:
-        The first code initializes session state variables in a loop for SESSION_KEYS.
-        The second code directly initializes messages1, messages2, and input_disabled.
+        This code initializes session state variables in a loop for SESSION_KEYS.
+        app_v2.py directly initializes messages1, messages2, and input_disabled.
 
     Model Selection:
-        The first code dynamically selects the number of models using a number input and loops through model selection.
-        The second code statically selects two models (model_1 and model_2).
+        This code dynamically selects the number of models using a number input and loops through model selection.
+        app_v2.py statically selects two models (model_1 and model_2).
 
     Prompt Handling:
-        Both handle prompt input and submission, but the first code uses st.chat_input with an on_submit method.
-        The second code uses st.chat_input with an on_submit method but has additional GIF loading for responses.
+        Both handle prompt input and submission, but this code uses st.chat_input with an on_submit method.
+        app_v2.py uses st.chat_input with an on_submit method but has additional GIF loading for responses.
 
     Async Function Differences:
-        The first code's run_prompt function calls await client.chat(model=model, messages=messages, stream=False).
-        The second code's run_prompt function streams the response and updates the UI incrementally with await client.chat.completions.create(model=model, messages=messages, stream=True).
+        This code's run_prompt function calls await client.chat(model=model, messages=messages, stream=False).
+        app_v2.py's run_prompt function streams the response and updates the UI incrementally with await client.chat.completions.create(model=model, messages=messages, stream=True).
 
     Styling:
-        The first code has custom CSS included directly in the script.
-        The second code has similar CSS but also includes a GIF for loading animation.
+        This code has custom CSS included directly in the script.
+        app_v2.py has similar CSS but also includes a GIF for loading animation.
 
     Clearing State:
-        The first code has clear_session_state() to clear messages and reset input.
-        The second code has clear_everything() to clear messages and reset input.
+        This code has clear_session_state() to clear messages and reset input.
+        app_v2.py has clear_everything() to clear messages and reset input.
 
 function llmstart {
     $env:OLLAMA_ORIGINS="app://obsidian.md*"
